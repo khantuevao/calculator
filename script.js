@@ -27,100 +27,114 @@ function operate(operator, a, b) {
 } 
 
 const lowerscreen = document.querySelector('#lowerscreen');
+const upperscreen = document.querySelector('#upperscreen');
 
 const one = document.querySelector('#one');
 one.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0') {
+    if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '1';
     } else {
         lowerscreen.textContent += '1';
     }
+    displayValue = lowerscreen.textContent;
 });
 
 const two = document.querySelector('#two');
 two.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0') {
+    if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '2';
     } else {
         lowerscreen.textContent += '2';
     }
+    displayValue = lowerscreen.textContent;
 });
 
 const three = document.querySelector('#three');
 three.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0') {
+    if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '3';
     } else {
         lowerscreen.textContent += '3';
     }
+    displayValue = lowerscreen.textContent;
 });
 
 const four = document.querySelector('#four');
 four.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0') {
+    if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '4';
     } else {
         lowerscreen.textContent += '4';
     }
+    displayValue = lowerscreen.textContent;
 });
 
 const five = document.querySelector('#five');
 five.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0') {
+    if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '5';
     } else {
         lowerscreen.textContent += '5';
     }
+    displayValue = lowerscreen.textContent;
 });
 
 const six = document.querySelector('#six');
 six.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0') {
+    if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '6';
     } else {
         lowerscreen.textContent += '6';
     }
+    displayValue = lowerscreen.textContent;
 });
 
 const seven = document.querySelector('#seven');
 seven.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0') {
+    if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '7';
     } else {
         lowerscreen.textContent += '7';
     }
+    displayValue = lowerscreen.textContent;
 });
 
 const eight = document.querySelector('#eight');
 eight.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0') {
+    if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '8';
     } else {
         lowerscreen.textContent += '8';
     }
+    displayValue = lowerscreen.textContent;
 });
 
 const nine = document.querySelector('#nine');
 nine.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0') {
+    if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '9';
     } else {
         lowerscreen.textContent += '9';
     }
+    displayValue = lowerscreen.textContent;
 });
 
 const zero = document.querySelector('#zero');
 zero.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0') {
+    if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '0';
     } else {
         lowerscreen.textContent += '0';
     }
+    displayValue = lowerscreen.textContent;
 });
 
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
     lowerscreen.textContent = '0';
+    upperscreen.textContent = '';
+    displayValue = 0;
+    storeValue = 0;
 })
 
 const backspace = document.querySelector('#backspace');
@@ -129,3 +143,12 @@ backspace.addEventListener('click', () => {
     if ((lowerscreen.textContent).length === 0) lowerscreen.textContent = '0';
 })
 
+let storeValue;
+let displayValue = 0;
+
+const plus = document.querySelector('#plus');
+plus.addEventListener('click', () => {
+    storeValue = displayValue;
+    upperscreen.textContent = `${storeValue} +`;
+    displayValue = 0;
+})
