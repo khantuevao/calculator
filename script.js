@@ -32,22 +32,6 @@ function operate(operator, a, b) {
     }
 } 
 
-let checkDot = () => {
-    let checkArray = (lowerscreen.textContent).split('');
-    let findArray = checkArray.includes('.');
-    return findArray;
-}
-
-const dot = document.querySelector('#dot');
-dot.addEventListener('click', () => {
-    if (checkDot()) {
-        return;
-    } else {
-        lowerscreen.textContent += '.';
-        displayValue = lowerscreen.textContent;
-    }
-});
-
 const lowerscreen = document.querySelector('#lowerscreen');
 const upperscreen = document.querySelector('#upperscreen');
 
@@ -72,6 +56,22 @@ backspace.addEventListener('click', () => {
         displayValue = lowerscreen.textContent;
         result = displayValue;
 })
+
+let checkDot = () => {
+    let checkArray = (lowerscreen.textContent).split('');
+    let findArray = checkArray.includes('.');
+    return findArray;
+}
+
+const dot = document.querySelector('#dot');
+dot.addEventListener('click', () => {
+    if (checkDot()) {
+        return;
+    } else {
+        lowerscreen.textContent += '.';
+        displayValue = lowerscreen.textContent;
+    }
+});
 
 const plus = document.querySelector('#plus');
 plus.addEventListener('click', () => {
