@@ -57,7 +57,7 @@ backspace.addEventListener('click', () => {
         if (lowerscreen.textContent === '') {
             lowerscreen.textContent = '0';
         }
-        displayValue = 0;
+        displayValue = lowerscreen.textContent;
         result = 0;
         storeValue = 0;
 })
