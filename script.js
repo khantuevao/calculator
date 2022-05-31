@@ -152,3 +152,24 @@ plus.addEventListener('click', () => {
     upperscreen.textContent = `${storeValue} +`;
     displayValue = 0;
 })
+
+const minus = document.querySelector('#minus');
+minus.addEventListener('click', () => {
+    storeValue = displayValue;
+    upperscreen.textContent = `${storeValue} -`;
+    displayValue = 0;
+})
+
+const multiplyBtn = document.querySelector('#multiplyBtn');
+multiplyBtn.addEventListener('click', () => {
+    storeValue = displayValue;
+    upperscreen.textContent = `${storeValue} ×`;
+    displayValue = 0;
+})
+
+const divideBtn = document.querySelector('#divideBtn');
+divideBtn.addEventListener('click', () => {
+    storeValue = displayValue;
+    upperscreen.textContent = `${storeValue} ÷`;
+    displayValue = 0;
+})
