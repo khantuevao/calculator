@@ -48,6 +48,7 @@ function clearValue() {
     upperscreen.textContent = '';
     displayValue = 0;
     storeValue = 0;
+    result = 0;
 }
 
 const backspace = document.querySelector('#backspace');
