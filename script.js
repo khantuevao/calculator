@@ -38,7 +38,7 @@ const upperscreen = document.querySelector('#upperscreen');
 let storeValue = 0;
 let displayValue = 0;
 let operator;
-let result;
+let result = 0;
 
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', clearValue);
@@ -176,7 +176,10 @@ function equalBt() {
 
 const one = document.querySelector('#one');
 one.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0' || displayValue === 0) {
+    if (result == lowerscreen.textContent && result == displayValue && lowerscreen.textContent == displayValue) {
+        clearValue();
+        lowerscreen.textContent = '1';
+    } else if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '1';
     } else {
         lowerscreen.textContent += '1';
@@ -186,7 +189,10 @@ one.addEventListener('click', () => {
 
 const two = document.querySelector('#two');
 two.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0' || displayValue === 0) {
+    if (result == lowerscreen.textContent && result == displayValue && lowerscreen.textContent == displayValue) {
+        clearValue();
+        lowerscreen.textContent = '2';
+    } else if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '2';
     } else {
         lowerscreen.textContent += '2';
@@ -196,7 +202,10 @@ two.addEventListener('click', () => {
 
 const three = document.querySelector('#three');
 three.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0' || displayValue === 0) {
+    if (result == lowerscreen.textContent && result == displayValue && lowerscreen.textContent == displayValue) {
+        clearValue();
+        lowerscreen.textContent = '3';
+    } else if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '3';
     } else {
         lowerscreen.textContent += '3';
@@ -206,7 +215,10 @@ three.addEventListener('click', () => {
 
 const four = document.querySelector('#four');
 four.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0' || displayValue === 0) {
+    if (result == lowerscreen.textContent && result == displayValue && lowerscreen.textContent == displayValue) {
+        clearValue();
+        lowerscreen.textContent = '4';
+    } else if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '4';
     } else {
         lowerscreen.textContent += '4';
@@ -216,7 +228,10 @@ four.addEventListener('click', () => {
 
 const five = document.querySelector('#five');
 five.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0' || displayValue === 0) {
+    if (result == lowerscreen.textContent && result == displayValue && lowerscreen.textContent == displayValue) {
+        clearValue();
+        lowerscreen.textContent = '5';
+    } else if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '5';
     } else {
         lowerscreen.textContent += '5';
@@ -226,7 +241,10 @@ five.addEventListener('click', () => {
 
 const six = document.querySelector('#six');
 six.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0' || displayValue === 0) {
+    if (result == lowerscreen.textContent && result == displayValue && lowerscreen.textContent == displayValue) {
+        clearValue();
+        lowerscreen.textContent = '6';
+    } else if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '6';
     } else {
         lowerscreen.textContent += '6';
@@ -236,7 +254,10 @@ six.addEventListener('click', () => {
 
 const seven = document.querySelector('#seven');
 seven.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0' || displayValue === 0) {
+    if (result == lowerscreen.textContent && result == displayValue && lowerscreen.textContent == displayValue) {
+        clearValue();
+        lowerscreen.textContent = '7';
+    } else if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '7';
     } else {
         lowerscreen.textContent += '7';
@@ -246,7 +267,10 @@ seven.addEventListener('click', () => {
 
 const eight = document.querySelector('#eight');
 eight.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0' || displayValue === 0) {
+    if (result == lowerscreen.textContent && result == displayValue && lowerscreen.textContent == displayValue) {
+        clearValue();
+        lowerscreen.textContent = '8';
+    } else if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '8';
     } else {
         lowerscreen.textContent += '8';
@@ -256,7 +280,10 @@ eight.addEventListener('click', () => {
 
 const nine = document.querySelector('#nine');
 nine.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0' || displayValue === 0) {
+    if (result == lowerscreen.textContent && result == displayValue && lowerscreen.textContent == displayValue) {
+        clearValue();
+        lowerscreen.textContent = '9';
+    } else if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '9';
     } else {
         lowerscreen.textContent += '9';
@@ -266,7 +293,10 @@ nine.addEventListener('click', () => {
 
 const zero = document.querySelector('#zero');
 zero.addEventListener('click', () => {
-    if (lowerscreen.textContent === '0' || displayValue === 0) {
+    if (result == lowerscreen.textContent && result == displayValue && lowerscreen.textContent == displayValue) {
+        clearValue();
+        lowerscreen.textContent = '0';
+    } else if (lowerscreen.textContent === '0' || displayValue === 0) {
         lowerscreen.textContent = '0';
     } else {
         lowerscreen.textContent += '0';
