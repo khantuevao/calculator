@@ -243,28 +243,28 @@ equal.addEventListener('click', equalBt);
 
 function equalBt() {
     if (operator === 'add') {
-        result = add(storeValue, displayValue);
+        result = (add(storeValue, displayValue)).toFixed(2);
         upperscreen.textContent = `${storeValue} + ${displayValue} =`;
         displayValue = result;
         lowerscreen.textContent = result
         storeValue = result;
         operator = '';
     } else if (operator === 'subtract') {
-        result = subtract(storeValue, displayValue);
+        result = (subtract(storeValue, displayValue)).toFixed(2);
         upperscreen.textContent = `${storeValue} - ${displayValue} =`;
         displayValue = result;
         lowerscreen.textContent = result;
         storeValue = result;
         operator = '';
     } else if (operator === 'multiply') {
-        result = multiply(storeValue, displayValue);
+        result = (multiply(storeValue, displayValue)).toFixed(2);
         upperscreen.textContent = `${storeValue} × ${displayValue} =`;
         displayValue = result;
         lowerscreen.textContent = result
         storeValue = result;
         operator = '';
     } else if (operator === 'divide'){
-        result = divide(storeValue, displayValue);
+        result = (divide(storeValue, displayValue)).toFixed(2);
         if (result === undefined) {
             clearValue()
             result = 0;
