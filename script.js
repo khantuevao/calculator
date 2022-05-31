@@ -53,8 +53,12 @@ function clearValue() {
 const backspace = document.querySelector('#backspace');
 backspace.addEventListener('click', () => {
         lowerscreen.textContent = (lowerscreen.textContent).slice(0, -1);
-        displayValue = lowerscreen.textContent;
-        result = displayValue;
+        if (lowerscreen.textContent === '') {
+            lowerscreen.textContent = '0';
+        }
+        displayValue = 0;
+        result = 0;
+        storeValue = 0;
 })
 
 let checkDot = () => {
@@ -182,7 +186,6 @@ one.addEventListener('click', () => {
 const two = document.querySelector('#two');
 two.addEventListener('click', () => {
     if (lowerscreen.textContent === '0' || displayValue === 0) {
-        
         lowerscreen.textContent = '2';
     } else {
         lowerscreen.textContent += '2';
