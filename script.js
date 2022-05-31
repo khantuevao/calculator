@@ -13,7 +13,11 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return a / b;
+    if (b == 0) {
+        alert('Error, cannot divide by 0');
+    } else {
+        return a / b;
+    }
 }
 
 function operate(operator, a, b) {
@@ -44,6 +48,7 @@ one.addEventListener('click', () => {
 const two = document.querySelector('#two');
 two.addEventListener('click', () => {
     if (lowerscreen.textContent === '0' || displayValue === 0) {
+        
         lowerscreen.textContent = '2';
     } else {
         lowerscreen.textContent += '2';
@@ -131,6 +136,22 @@ zero.addEventListener('click', () => {
     displayValue = lowerscreen.textContent;
 });
 
+let checkDot = () => {
+    let checkArray = (lowerscreen.textContent).split('');
+    let findArray = checkArray.includes('.');
+    return findArray;
+}
+
+const dot = document.querySelector('#dot');
+dot.addEventListener('click', () => {
+    if (checkDot()) {
+        return;
+    } else {
+        lowerscreen.textContent += '.';
+        displayValue = lowerscreen.textContent;
+    }
+});
+
 function clearValue() {
     lowerscreen.textContent = '0';
     upperscreen.textContent = '';
@@ -143,11 +164,11 @@ clear.addEventListener('click', clearValue)
 
 const backspace = document.querySelector('#backspace');
 backspace.addEventListener('click', () => {
-    
     if ((lowerscreen.textContent).length === 0) {
         lowerscreen.textContent = '0';
     } else if (displayValue === result) {
         clearValue()
+        lowerscreen.textContent = '0';
     } else {
         lowerscreen.textContent = (lowerscreen.textContent).slice(0, -1);
         displayValue = lowerscreen.textContent;
@@ -227,24 +248,33 @@ function equalBt() {
         displayValue = result;
         lowerscreen.textContent = result
         storeValue = result;
+        operator = '';
     } else if (operator === 'subtract') {
         result = subtract(storeValue, displayValue);
         upperscreen.textContent = `${storeValue} - ${displayValue} =`;
         displayValue = result;
         lowerscreen.textContent = result;
         storeValue = result;
+        operator = '';
     } else if (operator === 'multiply') {
         result = multiply(storeValue, displayValue);
         upperscreen.textContent = `${storeValue} × ${displayValue} =`;
         displayValue = result;
         lowerscreen.textContent = result
         storeValue = result;
-    } else {
+        operator = '';
+    } else if (operator === 'divide'){
         result = divide(storeValue, displayValue);
-        upperscreen.textContent = `${storeValue} ÷ ${displayValue} =`;
-        displayValue = result;
-        lowerscreen.textContent = result
-        storeValue = result;
+        if (result === undefined) {
+            clearValue()
+            result = 0;
+        } else {
+            upperscreen.textContent = `${storeValue} ÷ ${displayValue} =`;
+            displayValue = result;
+            lowerscreen.textContent = result
+            storeValue = result;
+            operator = '';
+        }
     }
 }
 
