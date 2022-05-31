@@ -40,6 +40,7 @@ body {
 
 #lowerscreen {
     height: 60px;
+    max-width: auto;
     align-items: flex-end;
     font-size: 46px;
 }
@@ -64,7 +65,7 @@ button {
     background-color: rgb(240, 240, 240);
 }
 
-#clear, #delete {
+#clear, #backspace {
     width: 170px;
 }
 
@@ -72,6 +73,6 @@ button {
     background-color: rgb(255, 70, 70);
 }
 
-#delete {
+#backspace {
     background-color: lightsalmon;
 }
