@@ -1,5 +1,5 @@
 function add(a, b) {
-    return a + b;
+    return Number(a) + Number(b);
 }
 
 function subtract(a, b) {
@@ -145,12 +145,15 @@ backspace.addEventListener('click', () => {
 
 let storeValue;
 let displayValue = 0;
+let operator;
+let result;
 
 const plus = document.querySelector('#plus');
 plus.addEventListener('click', () => {
     storeValue = displayValue;
     upperscreen.textContent = `${storeValue} +`;
     displayValue = 0;
+    operator = 'add';
 })
 
 const minus = document.querySelector('#minus');
@@ -158,6 +161,7 @@ minus.addEventListener('click', () => {
     storeValue = displayValue;
     upperscreen.textContent = `${storeValue} -`;
     displayValue = 0;
+    operator = 'subtract';
 })
 
 const multiplyBtn = document.querySelector('#multiplyBtn');
@@ -165,6 +169,7 @@ multiplyBtn.addEventListener('click', () => {
     storeValue = displayValue;
     upperscreen.textContent = `${storeValue} ×`;
     displayValue = 0;
+    operator = 'multiply';
 })
 
 const divideBtn = document.querySelector('#divideBtn');
@@ -172,4 +177,27 @@ divideBtn.addEventListener('click', () => {
     storeValue = displayValue;
     upperscreen.textContent = `${storeValue} ÷`;
     displayValue = 0;
+    operator = 'divide';
 })
+
+const equal = document.querySelector('#equal');
+equal.addEventListener('click', () => {
+    if (operator === 'add') {
+        result = add(storeValue, displayValue);
+        displayValue = result;
+        lowerscreen.textContent = result;
+    } else if (operator === 'subtract') {
+        result = subtract(storeValue, displayValue);
+        displayValue = result;
+        lowerscreen.textContent = result;
+    } else if (operator === 'multiply') {
+        result = multiply(storeValue, displayValue);
+        displayValue = result;
+        lowerscreen.textContent = result;
+    } else {
+        result = divide(storeValue, displayValue);
+        displayValue = result;
+        lowerscreen.textContent = result;
+    }
+})
+
