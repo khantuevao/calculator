@@ -131,18 +131,27 @@ zero.addEventListener('click', () => {
     displayValue = lowerscreen.textContent;
 });
 
-const clear = document.querySelector('#clear');
-clear.addEventListener('click', () => {
+function clearValue() {
     lowerscreen.textContent = '0';
     upperscreen.textContent = '';
     displayValue = 0;
     storeValue = 0;
-})
+}
+
+const clear = document.querySelector('#clear');
+clear.addEventListener('click', clearValue)
 
 const backspace = document.querySelector('#backspace');
 backspace.addEventListener('click', () => {
-    lowerscreen.textContent = (lowerscreen.textContent).slice(0, -1);
-    if ((lowerscreen.textContent).length === 0) lowerscreen.textContent = '0';
+    
+    if ((lowerscreen.textContent).length === 0) {
+        lowerscreen.textContent = '0';
+    } else if (displayValue === result) {
+        clearValue()
+    } else {
+        lowerscreen.textContent = (lowerscreen.textContent).slice(0, -1);
+        displayValue = lowerscreen.textContent;
+    }
 })
 
 let storeValue = 0;
