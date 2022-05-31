@@ -1,4 +1,6 @@
 function add(a, b) {
+    oldStoreValue = a;
+    oldDisplayValue = b;
     return Number(a) + Number(b);
 }
 
@@ -143,61 +145,97 @@ backspace.addEventListener('click', () => {
     if ((lowerscreen.textContent).length === 0) lowerscreen.textContent = '0';
 })
 
-let storeValue;
+let storeValue = 0;
 let displayValue = 0;
+let oldDisplayValue = 0;
+let oldStoreValue = 0;
 let operator;
 let result;
 
 const plus = document.querySelector('#plus');
 plus.addEventListener('click', () => {
-    storeValue = displayValue;
-    upperscreen.textContent = `${storeValue} +`;
-    displayValue = 0;
+    if (storeValue === 0 || displayValue === result) {
+        storeValue = displayValue;
+        upperscreen.textContent = `${storeValue} +`;
+        displayValue = 0;
+    } else {
+        equalBt();
+        upperscreen.textContent = `${storeValue} +`;
+        displayValue = 0;
+    }
     operator = 'add';
 })
 
 const minus = document.querySelector('#minus');
 minus.addEventListener('click', () => {
-    storeValue = displayValue;
-    upperscreen.textContent = `${storeValue} -`;
-    displayValue = 0;
+    if (storeValue === 0 || displayValue === result) {
+        storeValue = displayValue;
+        upperscreen.textContent = `${storeValue} -`;
+        displayValue = 0;
+    } else {
+        equalBt();
+        upperscreen.textContent = `${storeValue} -`;
+        displayValue = 0;
+    }
     operator = 'subtract';
 })
 
 const multiplyBtn = document.querySelector('#multiplyBtn');
 multiplyBtn.addEventListener('click', () => {
-    storeValue = displayValue;
-    upperscreen.textContent = `${storeValue} ×`;
-    displayValue = 0;
+    if (storeValue === 0 || displayValue === result) {
+        storeValue = displayValue;
+        upperscreen.textContent = `${storeValue} ×`;
+        displayValue = 0;
+    } else {
+        equalBt();
+        upperscreen.textContent = `${storeValue} ×`;
+        displayValue = 0;
+    }
     operator = 'multiply';
 })
 
 const divideBtn = document.querySelector('#divideBtn');
 divideBtn.addEventListener('click', () => {
-    storeValue = displayValue;
-    upperscreen.textContent = `${storeValue} ÷`;
-    displayValue = 0;
+    if (storeValue === 0 || displayValue === result) {
+        storeValue = displayValue;
+        upperscreen.textContent = `${storeValue} ÷`;
+        displayValue = 0;
+    } else {
+        equalBt();
+        upperscreen.textContent = `${storeValue} ÷`;
+        displayValue = 0;
+    }
     operator = 'divide';
 })
 
 const equal = document.querySelector('#equal');
-equal.addEventListener('click', () => {
+equal.addEventListener('click', equalBt);
+
+function equalBt() {
     if (operator === 'add') {
         result = add(storeValue, displayValue);
+        upperscreen.textContent = `${storeValue} + ${displayValue} =`;
         displayValue = result;
-        lowerscreen.textContent = result;
+        lowerscreen.textContent = result
+        storeValue = result;
     } else if (operator === 'subtract') {
         result = subtract(storeValue, displayValue);
+        upperscreen.textContent = `${storeValue} - ${displayValue} =`;
         displayValue = result;
         lowerscreen.textContent = result;
+        storeValue = result;
     } else if (operator === 'multiply') {
         result = multiply(storeValue, displayValue);
+        upperscreen.textContent = `${storeValue} × ${displayValue} =`;
         displayValue = result;
-        lowerscreen.textContent = result;
+        lowerscreen.textContent = result
+        storeValue = result;
     } else {
         result = divide(storeValue, displayValue);
+        upperscreen.textContent = `${storeValue} ÷ ${displayValue} =`;
         displayValue = result;
-        lowerscreen.textContent = result;
+        lowerscreen.textContent = result
+        storeValue = result;
     }
-})
+}
 
