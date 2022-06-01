@@ -43,4 +43,7 @@ numberButtons.forEach(numberButton => {
     });
 });
 
+function selectOperator() {
+
+}
 
