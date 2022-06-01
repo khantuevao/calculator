@@ -49,27 +49,31 @@ const operatorAdd = document.querySelector('#operator-add');
 operatorAdd.addEventListener('click', () => {
     operator = 'add';
     storeValue = lowerValue.textContent;
-    upperValue.textContent = `${storeValue} +`
+    upperValue.textContent = `${storeValue} +`;
+    lowerValue.textContent = '0';
 });
 
 const operatorSubtract = document.querySelector('#operator-subtract');
 operatorSubtract.addEventListener('click', () => {
     operator = 'subtract';
     storeValue = lowerValue.textContent;
-    upperValue.textContent = `${storeValue} -`
+    upperValue.textContent = `${storeValue} -`;
+    lowerValue.textContent = '0';
 });
 
 const operatorMultiply = document.querySelector('#operator-multiply');
 operatorMultiply.addEventListener('click', () => {
     operator = 'multiply';
     storeValue = lowerValue.textContent;
-    upperValue.textContent = `${storeValue} ×`
+    upperValue.textContent = `${storeValue} ×`;
+    lowerValue.textContent = '0';
 });
 
 const operatorDivide = document.querySelector('#operator-divide');
 operatorDivide.addEventListener('click', () => {
     operator = 'divide';
     storeValue = lowerValue.textContent;
-    upperValue.textContent = `${storeValue} ÷`
+    upperValue.textContent = `${storeValue} ÷`;
+    lowerValue.textContent = '0';
 });
 
