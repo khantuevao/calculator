@@ -70,6 +70,9 @@ const dot = document.querySelector('#dot');
 dot.addEventListener('click', () => {
     if (checkDot()) {
         return;
+    } else if (finalResult == true) {
+        clearData();
+        lowerValue.textContent += dot.textContent;
     } else {
         lowerValue.textContent += dot.textContent;
     }
