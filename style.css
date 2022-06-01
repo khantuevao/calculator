@@ -76,3 +76,11 @@ button {
 #backspace {
     background-color: lightsalmon;
 }
+
+#equal {
+    background-color: rgb(245, 245, 70);
+}
+
+#divideBtn, #multiplyBtn, #plus, #minus {
+    background-color: rgb(185, 185, 93);
+}

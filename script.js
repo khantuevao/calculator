@@ -70,7 +70,11 @@ let checkDot = () => {
 
 const dot = document.querySelector('#dot');
 dot.addEventListener('click', () => {
-    if (checkDot()) {
+    if (result == lowerscreen.textContent && result == displayValue && lowerscreen.textContent == displayValue) {
+        clearValue();
+        lowerscreen.textContent = '.';
+        displayValue = lowerscreen.textContent;
+    } else if (checkDot()) {
         return;
     } else {
         lowerscreen.textContent += '.';
@@ -179,7 +183,7 @@ one.addEventListener('click', () => {
     if (result == lowerscreen.textContent && result == displayValue && lowerscreen.textContent == displayValue) {
         clearValue();
         lowerscreen.textContent = '1';
-    } else if (lowerscreen.textContent === '0' || displayValue === 0) {
+    } else if (lowerscreen.textContent === '0' || displayValue === '0') {
         lowerscreen.textContent = '1';
     } else {
         lowerscreen.textContent += '1';
