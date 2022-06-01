@@ -22,9 +22,9 @@ function operate(a, b) {
         result = +(add(a, b)).toFixed(2);
     } else if (operator === '-') {
         result = +(subtract(a, b)).toFixed(2);
-    } else if (operator === '*') {
+    } else if (operator === '×') {
         result = +(multiply(a, b)).toFixed(2);
-    } else if (operator === '/') {
+    } else if (operator === '÷') {
         result = +(divide(a ,b)).toFixed(2);
     } else {
         alert('Error, check operate function!');
@@ -48,7 +48,8 @@ numberButtons.forEach(numberButton => {
 let operator = '';
 let storeValue;
 
-// Assigns operator
+// operator functions (+-*/) are almost identical, need to figure how to
+// combine them to take less space
 
 const operatorAdd = document.querySelector('#operator-add');
 operatorAdd.addEventListener('click', () => {
@@ -56,7 +57,7 @@ operatorAdd.addEventListener('click', () => {
         operator = '+';
         storeValue = lowerValue.textContent;
         upperValue.textContent = `${storeValue} ${operator}`;
-        lowerValue.textContent = '0';
+        lowerValue.textContent = 0;
     } else if (!(operator === '+')) { 
         operate(storeValue, lowerValue.textContent);
         operator = '+';
@@ -77,7 +78,7 @@ operatorSubtract.addEventListener('click', () => {
         operator = '-';
         storeValue = lowerValue.textContent;
         upperValue.textContent = `${storeValue} ${operator}`;
-        lowerValue.textContent = '0';
+        lowerValue.textContent = 0;
     } else if (!(operator === '-')) { 
         operate(storeValue, lowerValue.textContent);
         operator = '-';
@@ -95,13 +96,13 @@ operatorSubtract.addEventListener('click', () => {
 const operatorMultiply = document.querySelector('#operator-multiply');
 operatorMultiply.addEventListener('click', () => {
     if (operator === '') {
-        operator = '*';
+        operator = '×';
         storeValue = lowerValue.textContent;
         upperValue.textContent = `${storeValue} ${operator}`;
-        lowerValue.textContent = '0';
-    } else if (!(operator === '/')) { 
+        lowerValue.textContent = 0;
+    } else if (!(operator === '×')) { 
         operate(storeValue, lowerValue.textContent);
-        operator = '*';
+        operator = '×';
         upperValue.textContent = `${result} ${operator}`;
         lowerValue.textContent = 0;
         storeValue = result;
@@ -116,13 +117,13 @@ operatorMultiply.addEventListener('click', () => {
 const operatorDivide = document.querySelector('#operator-divide');
 operatorDivide.addEventListener('click', () => {
     if (operator === '') {
-        operator = '/';
+        operator = '÷';
         storeValue = lowerValue.textContent;
         upperValue.textContent = `${storeValue} ${operator}`;
-        lowerValue.textContent = '0';
-    } else if (!(operator === '/')) { 
+        lowerValue.textContent = 0;
+    } else if (!(operator === '÷')) { 
         operate(storeValue, lowerValue.textContent);
-        operator = '/';
+        operator = '÷';
         upperValue.textContent = `${result} ${operator}`;
         lowerValue.textContent = 0;
         storeValue = result;
