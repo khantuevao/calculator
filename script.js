@@ -30,9 +30,10 @@ function operate(operator, a, b) {
 
 let operator = '';
 let lowerValue = document.querySelector('#lowerscreen');
-let upperValue;
+let upperValue = document.querySelector('#upperscreen');
 
 const numberButtons = document.querySelectorAll('.number-button');
+
 numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', function() {
         if (lowerValue.textContent === '0') {
@@ -43,7 +44,23 @@ numberButtons.forEach(numberButton => {
     });
 });
 
-function selectOperator() {
+const operatorAdd = document.querySelector('#operator-add');
+operatorAdd.addEventListener('click', () => {
+    operator = 'add';
+});
 
-}
+const operatorSubtract = document.querySelector('#operator-subtract');
+operatorAdd.addEventListener('click', () => {
+    operator = 'subtract';
+});
+
+const operatorMultiply = document.querySelector('#operator-multiply');
+operatorAdd.addEventListener('click', () => {
+    operator = 'multiply';
+});
+
+const operatorDivide = document.querySelector('#operator-divide');
+operatorAdd.addEventListener('click', () => {
+    operator = 'divide';
+});
 
