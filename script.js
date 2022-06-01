@@ -1,5 +1,5 @@
 function add(a, b) {
-    return a + b;
+    return Number(a) + Number(b);
 }
 
 function subtract(a, b) {
@@ -14,15 +14,16 @@ function divide(a, b) {
     return a / b;
 }
 
-function operate(operator, a, b) {
-    if (operator === 'plus') {
-        add(a, b);
-    } else if (operator === 'subtract') {
-        subtract(a, b);
-    } else if (operator === 'multiply') {
-        multiply(a, b);
-    } else if (operator === 'divide') {
-        divide(a ,b);
+let result;
+function operate(a, b) {
+    if (operator === '+') {
+        result = add(a, b);
+    } else if (operator === '-') {
+        result = subtract(a, b);
+    } else if (operator === '*') {
+        result = multiply(a, b);
+    } else if (operator === '/') {
+        result = divide(a ,b);
     } else {
         alert('Error, check operate function!');
     }
@@ -47,33 +48,42 @@ let storeValue;
 
 const operatorAdd = document.querySelector('#operator-add');
 operatorAdd.addEventListener('click', () => {
-    operator = 'add';
+    operator = '+';
     storeValue = lowerValue.textContent;
-    upperValue.textContent = `${storeValue} +`;
+    upperValue.textContent = `${storeValue} ${operator}`;
     lowerValue.textContent = '0';
 });
 
 const operatorSubtract = document.querySelector('#operator-subtract');
 operatorSubtract.addEventListener('click', () => {
-    operator = 'subtract';
+    operator = '-';
     storeValue = lowerValue.textContent;
-    upperValue.textContent = `${storeValue} -`;
+    upperValue.textContent = `${storeValue} ${operator}`;
     lowerValue.textContent = '0';
 });
 
 const operatorMultiply = document.querySelector('#operator-multiply');
 operatorMultiply.addEventListener('click', () => {
-    operator = 'multiply';
+    operator = '*';
     storeValue = lowerValue.textContent;
-    upperValue.textContent = `${storeValue} ×`;
+    upperValue.textContent = `${storeValue} ${operator}`;
     lowerValue.textContent = '0';
 });
 
 const operatorDivide = document.querySelector('#operator-divide');
 operatorDivide.addEventListener('click', () => {
-    operator = 'divide';
+    operator = '/';
     storeValue = lowerValue.textContent;
-    upperValue.textContent = `${storeValue} ÷`;
+    upperValue.textContent = `${storeValue} ${operator}`;
     lowerValue.textContent = '0';
 });
 
+const operatorCount = document.querySelector('#operator-count');
+operatorCount.addEventListener('click', () => {
+    if (operator === '') return;
+    operate(storeValue, lowerValue.textContent);
+    upperValue.textContent = `${storeValue} ${operator} ${lowerValue.textContent} =`
+    lowerValue.textContent = `${result}`;
+    storeValue = result;
+    operator = '';
+})
