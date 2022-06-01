@@ -1,5 +1,3 @@
-let result;
-
 function add(a, b) {
     return Number(a) + Number(b);
 }
@@ -16,6 +14,8 @@ function divide(a, b) {
     if (b == 0) return 0;
     return a / b;
 }
+
+let result;
 
 function operate(a, b) {
     if (operator === '+') {
@@ -37,7 +37,10 @@ let upperValue = document.querySelector('#upperscreen');
 const numberButtons = document.querySelectorAll('.number-button');
 numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', function() {
-        if (lowerValue.textContent === '0') {
+        if (finalResult == true) {
+            clearData();
+            lowerValue.textContent = numberButton.textContent;
+        } else if (lowerValue.textContent === '0') {
             lowerValue.textContent = numberButton.textContent;
         } else {
             lowerValue.textContent += numberButton.textContent;
@@ -45,8 +48,23 @@ numberButtons.forEach(numberButton => {
     });
 });
 
+function clearData() {
+    upperValue.textContent = '';
+    lowerValue.textContent = '0';
+    storeValue = '';
+    result = '';
+    operator = '';
+    finalResult = false;
+}
+
+const clear = document.querySelector('#clear');
+clear.addEventListener('click', clearData);
+
+
+
 let operator = '';
 let storeValue;
+let finalResult = false;
 
 // operator functions (+-*/) are almost identical, need to figure how to
 // combine them to take less space
@@ -143,4 +161,5 @@ operatorCount.addEventListener('click', () => {
     lowerValue.textContent = `${result}`;
     storeValue = result;
     operator = '';
+    finalResult = true;
 })
