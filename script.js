@@ -11,7 +11,6 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if (b == 0) return 0;
     return a / b;
 }
 
@@ -25,7 +24,7 @@ function operate(a, b) {
     } else if (operator === '×') {
         result = +(multiply(a, b)).toFixed(2);
     } else if (operator === '÷') {
-        result = +(divide(a ,b)).toFixed(2);
+        result = +(divide(a , b)).toFixed(2);
     } else {
         alert('Error, check operate function!');
     }
@@ -61,7 +60,16 @@ const clear = document.querySelector('#clear');
 clear.addEventListener('click', clearData);
 
 const backspace = document.querySelector('#backspace');
-backspace.addEventListener('click', () => finalResult? clearData() : lowerValue.textContent = (lowerValue.textContent).slice(0, -1));
+backspace.addEventListener('click', () => {
+    if (finalResult) {
+        clearData();
+    } else {
+        lowerValue.textContent = (lowerValue.textContent).slice(0, -1);
+    }
+    if (lowerValue.textContent === '' || lowerValue.textContent === '0') {
+        lowerValue.textContent = '0';
+    }
+});
 
 function checkDot() {
     let array = (lowerValue.textContent).split('');
@@ -107,6 +115,7 @@ operatorAdd.addEventListener('click', () => {
         lowerValue.textContent = 0;
         storeValue = result;
     }
+    finalResult = false;
 });
 
 const operatorSubtract = document.querySelector('#operator-subtract');
@@ -128,6 +137,7 @@ operatorSubtract.addEventListener('click', () => {
         lowerValue.textContent = 0;
         storeValue = result;
     }
+    finalResult = false;
 });
 
 const operatorMultiply = document.querySelector('#operator-multiply');
@@ -149,6 +159,7 @@ operatorMultiply.addEventListener('click', () => {
         lowerValue.textContent = 0;
         storeValue = result;
     }
+    finalResult = false;
 });
 
 const operatorDivide = document.querySelector('#operator-divide');
@@ -160,25 +171,33 @@ operatorDivide.addEventListener('click', () => {
         lowerValue.textContent = 0;
     } else if (!(operator === '÷')) { 
         operate(storeValue, lowerValue.textContent);
+        if (lowerValue.textContent == 0) return;
         operator = '÷';
         upperValue.textContent = `${result} ${operator}`;
         lowerValue.textContent = 0;
         storeValue = result;
     } else {
         operate(storeValue, lowerValue.textContent);
+        if (lowerValue.textContent == 0) return;
         upperValue.textContent = `${result} ${operator}`;
         lowerValue.textContent = 0;
         storeValue = result;
     }
+    finalResult = false;
 });
 
 const operatorCount = document.querySelector('#operator-count');
 operatorCount.addEventListener('click', () => {
     if (operator === '') return;
     operate(storeValue, lowerValue.textContent);
-    upperValue.textContent = `${storeValue} ${operator} ${lowerValue.textContent} =`;
-    lowerValue.textContent = `${result}`;
-    storeValue = result;
-    operator = '';
-    finalResult = true;
+    if (result == Infinity) {
+        alert('Can\'t divide by 0!');
+        return;
+    } else {
+        upperValue.textContent = `${storeValue} ${operator} ${lowerValue.textContent} =`;
+        lowerValue.textContent = `${result}`;
+        storeValue = result;
+        operator = '';
+        finalResult = true;
+    }
 })
