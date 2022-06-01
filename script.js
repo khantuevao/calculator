@@ -20,14 +20,23 @@ function operate(operator, a, b) {
     } else if (operator === 'subtract') {
         subtract(a, b);
     } else if (operator === 'multiply') {
-        function multiply(a, b);
+        multiply(a, b);
     } else if (operator === 'divide') {
-        function divide(a ,b);
+        divide(a ,b);
     } else {
         alert('Error, check operate function!');
     }
 }
 
 let operator = '';
-let lowerValue;
+let lowerValue = document.querySelector('#lowerscreen');
 let upperValue;
+
+const numberButtons = document.querySelectorAll('.number-button');
+numberButtons.forEach(numberButton => {
+    numberButton.addEventListener('click', function() {
+        lowerValue.textContent += numberButton.textContent;
+    });
+});
+
+
