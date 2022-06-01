@@ -60,6 +60,9 @@ function clearData() {
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', clearData);
 
+const backspace = document.querySelector('#backspace');
+backspace.addEventListener('click', () => finalResult? clearData() : lowerValue.textContent = (lowerValue.textContent).slice(0, -1));
+
 function checkDot() {
     let array = (lowerValue.textContent).split('');
     let checkArray = array.includes('.');
