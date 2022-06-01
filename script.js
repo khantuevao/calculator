@@ -27,3 +27,7 @@ function operate(operator, a, b) {
         alert('Error, check operate function!');
     }
 }
+
+let operator = '';
+let lowerValue;
+let upperValue;
