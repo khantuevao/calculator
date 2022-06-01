@@ -28,6 +28,13 @@ function operate(a, b) {
     } else {
         alert('Error, check operate function!');
     }
+    if (result == Infinity) {
+        alert('Can\'t divide by 0!');
+        result = '0';
+        operator = '';
+        upperValue.textContent = `${storeValue}`;
+        return;
+    }
 }
 
 let lowerValue = document.querySelector('#lowerscreen');
@@ -90,7 +97,7 @@ dot.addEventListener('click', () => {
 });
 
 let operator = '';
-let storeValue;
+let storeValue ='';
 let finalResult = false;
 
 // operator functions (+-*/) are almost identical, need to figure how to
@@ -98,9 +105,22 @@ let finalResult = false;
 
 const operatorAdd = document.querySelector('#operator-add');
 operatorAdd.addEventListener('click', () => {
-    if (operator === '') {
+    if (operator === '' && storeValue === '0') {
         operator = '+';
         storeValue = lowerValue.textContent;
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = 0;
+    } else if (operator === '' && storeValue === '') {
+        operator = '+';
+        storeValue = lowerValue.textContent;
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = 0;
+    } else if (!(storeValue === '0' && !(operator === ''))) {
+        operator = '+';
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = 0;
+    } else if (operator === '') {
+        operator = '+';
         upperValue.textContent = `${storeValue} ${operator}`;
         lowerValue.textContent = 0;
     } else if (!(operator === '+')) { 
@@ -120,9 +140,22 @@ operatorAdd.addEventListener('click', () => {
 
 const operatorSubtract = document.querySelector('#operator-subtract');
 operatorSubtract.addEventListener('click', () => {
-    if (operator === '') {
+    if (operator === '' && storeValue === '0') {
         operator = '-';
         storeValue = lowerValue.textContent;
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = 0;
+    } else if (operator === '' && storeValue === '') {
+        operator = '-';
+        storeValue = lowerValue.textContent;
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = 0;
+    } else if (!(storeValue === '0' && !(operator === ''))) {
+        operator = '-';
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = 0;
+    } else if (operator === '') {
+        operator = '-';
         upperValue.textContent = `${storeValue} ${operator}`;
         lowerValue.textContent = 0;
     } else if (!(operator === '-')) { 
@@ -142,9 +175,22 @@ operatorSubtract.addEventListener('click', () => {
 
 const operatorMultiply = document.querySelector('#operator-multiply');
 operatorMultiply.addEventListener('click', () => {
-    if (operator === '') {
+    if (operator === '' && storeValue === '0') {
         operator = '×';
         storeValue = lowerValue.textContent;
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = 0;
+    } else if (operator === '' && storeValue === '') {
+        operator = '×';
+        storeValue = lowerValue.textContent;
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = 0;
+    } else if (!(storeValue === '0' && !(operator === ''))) {
+        operator = '×';
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = 0;
+    } else if (operator === '') {
+        operator = '×';
         upperValue.textContent = `${storeValue} ${operator}`;
         lowerValue.textContent = 0;
     } else if (!(operator === '×')) { 
@@ -164,14 +210,26 @@ operatorMultiply.addEventListener('click', () => {
 
 const operatorDivide = document.querySelector('#operator-divide');
 operatorDivide.addEventListener('click', () => {
-    if (operator === '') {
+    if (operator === '' && storeValue === '') {
         operator = '÷';
         storeValue = lowerValue.textContent;
         upperValue.textContent = `${storeValue} ${operator}`;
         lowerValue.textContent = 0;
+    } else if (operator === '' && storeValue === '') {
+        operator = '÷';
+        storeValue = lowerValue.textContent;
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = 0;
+    } else if (!(storeValue === '0' && !(operator === ''))) {
+        operator = '÷';
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = 0;
+    } else if (operator === '') {
+        operator = '÷';
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = 0;
     } else if (!(operator === '÷')) { 
         operate(storeValue, lowerValue.textContent);
-        if (lowerValue.textContent == 0) return;
         operator = '÷';
         upperValue.textContent = `${result} ${operator}`;
         lowerValue.textContent = 0;
@@ -190,14 +248,11 @@ const operatorCount = document.querySelector('#operator-count');
 operatorCount.addEventListener('click', () => {
     if (operator === '') return;
     operate(storeValue, lowerValue.textContent);
-    if (result == Infinity) {
-        alert('Can\'t divide by 0!');
-        return;
-    } else {
-        upperValue.textContent = `${storeValue} ${operator} ${lowerValue.textContent} =`;
-        lowerValue.textContent = `${result}`;
-        storeValue = result;
-        operator = '';
-        finalResult = true;
-    }
+    if (result === '0') return;
+    upperValue.textContent = `${storeValue} ${operator} ${lowerValue.textContent} =`;
+    lowerValue.textContent = `${result}`;
+    storeValue = result;
+    operator = '';
+    finalResult = true;
+    
 })
