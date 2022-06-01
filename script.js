@@ -28,12 +28,10 @@ function operate(operator, a, b) {
     }
 }
 
-let operator = '';
 let lowerValue = document.querySelector('#lowerscreen');
 let upperValue = document.querySelector('#upperscreen');
 
 const numberButtons = document.querySelectorAll('.number-button');
-
 numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', function() {
         if (lowerValue.textContent === '0') {
@@ -44,23 +42,34 @@ numberButtons.forEach(numberButton => {
     });
 });
 
+let operator = '';
+let storeValue;
+
 const operatorAdd = document.querySelector('#operator-add');
 operatorAdd.addEventListener('click', () => {
     operator = 'add';
+    storeValue = lowerValue.textContent;
+    upperValue.textContent = `${storeValue} +`
 });
 
 const operatorSubtract = document.querySelector('#operator-subtract');
-operatorAdd.addEventListener('click', () => {
+operatorSubtract.addEventListener('click', () => {
     operator = 'subtract';
+    storeValue = lowerValue.textContent;
+    upperValue.textContent = `${storeValue} -`
 });
 
 const operatorMultiply = document.querySelector('#operator-multiply');
-operatorAdd.addEventListener('click', () => {
+operatorMultiply.addEventListener('click', () => {
     operator = 'multiply';
+    storeValue = lowerValue.textContent;
+    upperValue.textContent = `${storeValue} ×`
 });
 
 const operatorDivide = document.querySelector('#operator-divide');
-operatorAdd.addEventListener('click', () => {
+operatorDivide.addEventListener('click', () => {
     operator = 'divide';
+    storeValue = lowerValue.textContent;
+    upperValue.textContent = `${storeValue} ÷`
 });
 
