@@ -60,7 +60,20 @@ function clearData() {
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', clearData);
 
+function checkDot() {
+    let array = (lowerValue.textContent).split('');
+    let checkArray = array.includes('.');
+    return checkArray;
+}
 
+const dot = document.querySelector('#dot');
+dot.addEventListener('click', () => {
+    if (checkDot()) {
+        return;
+    } else {
+        lowerValue.textContent += dot.textContent;
+    }
+});
 
 let operator = '';
 let storeValue;
