@@ -35,7 +35,11 @@ let upperValue;
 const numberButtons = document.querySelectorAll('.number-button');
 numberButtons.forEach(numberButton => {
     numberButton.addEventListener('click', function() {
-        lowerValue.textContent += numberButton.textContent;
+        if (lowerValue.textContent === '0') {
+            lowerValue.textContent = numberButton.textContent;
+        } else {
+            lowerValue.textContent += numberButton.textContent;
+        }
     });
 });
 
