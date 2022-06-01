@@ -1,3 +1,5 @@
+let result;
+
 function add(a, b) {
     return Number(a) + Number(b);
 }
@@ -11,19 +13,19 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+    if (b == 0) return 0;
     return a / b;
 }
 
-let result;
 function operate(a, b) {
     if (operator === '+') {
-        result = add(a, b);
+        result = +(add(a, b)).toFixed(2);
     } else if (operator === '-') {
-        result = subtract(a, b);
+        result = +(subtract(a, b)).toFixed(2);
     } else if (operator === '*') {
-        result = multiply(a, b);
+        result = +(multiply(a, b)).toFixed(2);
     } else if (operator === '/') {
-        result = divide(a ,b);
+        result = +(divide(a ,b)).toFixed(2);
     } else {
         alert('Error, check operate function!');
     }
@@ -46,43 +48,97 @@ numberButtons.forEach(numberButton => {
 let operator = '';
 let storeValue;
 
+// Assigns operator
+
 const operatorAdd = document.querySelector('#operator-add');
 operatorAdd.addEventListener('click', () => {
-    operator = '+';
-    storeValue = lowerValue.textContent;
-    upperValue.textContent = `${storeValue} ${operator}`;
-    lowerValue.textContent = '0';
+    if (operator === '') {
+        operator = '+';
+        storeValue = lowerValue.textContent;
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = '0';
+    } else if (!(operator === '+')) { 
+        operate(storeValue, lowerValue.textContent);
+        operator = '+';
+        upperValue.textContent = `${result} ${operator}`;
+        lowerValue.textContent = 0;
+        storeValue = result;
+    } else {
+        operate(storeValue, lowerValue.textContent);
+        upperValue.textContent = `${result} ${operator}`;
+        lowerValue.textContent = 0;
+        storeValue = result;
+    }
 });
 
 const operatorSubtract = document.querySelector('#operator-subtract');
 operatorSubtract.addEventListener('click', () => {
-    operator = '-';
-    storeValue = lowerValue.textContent;
-    upperValue.textContent = `${storeValue} ${operator}`;
-    lowerValue.textContent = '0';
+    if (operator === '') {
+        operator = '-';
+        storeValue = lowerValue.textContent;
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = '0';
+    } else if (!(operator === '-')) { 
+        operate(storeValue, lowerValue.textContent);
+        operator = '-';
+        upperValue.textContent = `${result} ${operator}`;
+        lowerValue.textContent = 0;
+        storeValue = result;
+    } else {
+        operate(storeValue, lowerValue.textContent);
+        upperValue.textContent = `${result} ${operator}`;
+        lowerValue.textContent = 0;
+        storeValue = result;
+    }
 });
 
 const operatorMultiply = document.querySelector('#operator-multiply');
 operatorMultiply.addEventListener('click', () => {
-    operator = '*';
-    storeValue = lowerValue.textContent;
-    upperValue.textContent = `${storeValue} ${operator}`;
-    lowerValue.textContent = '0';
+    if (operator === '') {
+        operator = '*';
+        storeValue = lowerValue.textContent;
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = '0';
+    } else if (!(operator === '/')) { 
+        operate(storeValue, lowerValue.textContent);
+        operator = '*';
+        upperValue.textContent = `${result} ${operator}`;
+        lowerValue.textContent = 0;
+        storeValue = result;
+    } else {
+        operate(storeValue, lowerValue.textContent);
+        upperValue.textContent = `${result} ${operator}`;
+        lowerValue.textContent = 0;
+        storeValue = result;
+    }
 });
 
 const operatorDivide = document.querySelector('#operator-divide');
 operatorDivide.addEventListener('click', () => {
-    operator = '/';
-    storeValue = lowerValue.textContent;
-    upperValue.textContent = `${storeValue} ${operator}`;
-    lowerValue.textContent = '0';
+    if (operator === '') {
+        operator = '/';
+        storeValue = lowerValue.textContent;
+        upperValue.textContent = `${storeValue} ${operator}`;
+        lowerValue.textContent = '0';
+    } else if (!(operator === '/')) { 
+        operate(storeValue, lowerValue.textContent);
+        operator = '/';
+        upperValue.textContent = `${result} ${operator}`;
+        lowerValue.textContent = 0;
+        storeValue = result;
+    } else {
+        operate(storeValue, lowerValue.textContent);
+        upperValue.textContent = `${result} ${operator}`;
+        lowerValue.textContent = 0;
+        storeValue = result;
+    }
 });
 
 const operatorCount = document.querySelector('#operator-count');
 operatorCount.addEventListener('click', () => {
     if (operator === '') return;
     operate(storeValue, lowerValue.textContent);
-    upperValue.textContent = `${storeValue} ${operator} ${lowerValue.textContent} =`
+    upperValue.textContent = `${storeValue} ${operator} ${lowerValue.textContent} =`;
     lowerValue.textContent = `${result}`;
     storeValue = result;
     operator = '';
