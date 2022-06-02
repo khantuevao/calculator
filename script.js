@@ -60,8 +60,21 @@ operatorButtons.forEach(operatorButton => {
             upperValue.textContent = `${lowerValue.textContent} ${operatorButton.textContent}`;
             lowerValue.textContent = '0';
         } else if (storeObject.numberTwo === undefined) {
-            if (lowerValue.textContent === '0') return;
-            if (operatorButton.textContent === '=') {
+            if (lowerValue.textContent === '0') {
+                if (operatorButton.textContent === '=') {
+                    storeObject.numberTwo = lowerValue.textContent;
+                    operate(storeObject.numberOne, storeObject.numberTwo)
+                    upperValue.textContent = `${storeObject.numberOne} ${storeObject.operator} ${storeObject.numberTwo} ${operatorButton.textContent}`;
+                    lowerValue.textContent = result;
+                    storeObject.operator = undefined;
+                    storeObject.numberOne = result;
+                    storeObject.numberTwo = undefined;
+                    finalResult = true;
+                } else {
+                    storeObject.operator = operatorButton.textContent;
+                    upperValue.textContent = `${storeObject.numberOne} ${operatorButton.textContent}`;
+                }
+            } else if (operatorButton.textContent === '=') {
                 if (storeObject.operator === undefined) return;
                 storeObject.numberTwo = lowerValue.textContent;
                 operate(storeObject.numberOne, storeObject.numberTwo)
@@ -70,6 +83,7 @@ operatorButtons.forEach(operatorButton => {
                 storeObject.operator = undefined;
                 storeObject.numberOne = result;
                 storeObject.numberTwo = undefined;
+                finalResult = true;
             } else {
                 storeObject.numberTwo = lowerValue.textContent;
                 operate(storeObject.numberOne, storeObject.numberTwo);
@@ -78,6 +92,7 @@ operatorButtons.forEach(operatorButton => {
                 lowerValue.textContent = '0';
                 storeObject.numberOne = result;
                 storeObject.numberTwo = undefined;
+                finalResult = false;
             }
         }
     })
