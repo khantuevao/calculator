@@ -166,6 +166,5 @@ dot.addEventListener('click', () => {
 
 window.addEventListener('keydown', function(e) {
     const buttonKey = document.querySelector(`button[data-code='${e.key}']`);
-    console.log(e);
     buttonKey.click();
 })
