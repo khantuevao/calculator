@@ -9,7 +9,7 @@ body {
     margin-top: 100px;
     border: 2px solid black;
     border-radius: 10px;
-    background-color: rgb(135, 138, 138);
+    background-color: #596867;
 }
 
 .screen {
@@ -18,7 +18,7 @@ body {
     padding: 10px 20px 20px 20px;
     border: 2px solid black;
     border-radius: 4px;
-    background-color: rgb(240, 240, 240);
+    background-color: #cac7c7;
     max-height: 300px;display: flex;
 }
 
@@ -64,7 +64,7 @@ button {
     border: 2px solid black;
     border-radius: 4px;
     font-size: 20px;
-    background-color: rgb(240, 240, 240);
+    background-color: #cac7c7;
 }
 
 #clear, #backspace {
@@ -72,18 +72,18 @@ button {
 }
 
 #clear {
-    background-color: rgb(255, 70, 70);
+    background-color: #ff3b38de;
 }
 
 #backspace {
-    background-color: lightsalmon;
+    background-color: #ff8a42ee;
     font-size: 20px;
 }
 
 #operator-count {
-    background-color: rgb(245, 245, 70);
+    background-color: #124b45;
 }
 
 #operator-divide, #operator-multiply, #operator-add, #operator-subtract {
-    background-color: rgb(216, 216, 117);
+    background-color: #158378;
 }
