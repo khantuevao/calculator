@@ -38,6 +38,7 @@ numberButtons.forEach(numberButton => {
         } else if (lowerValue.textContent === '0') {
             lowerValue.textContent = numberButton.textContent;
         } else {
+            if ((lowerValue.textContent).length === 12) return;
             lowerValue.textContent += numberButton.textContent;
         }
     });
