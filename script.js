@@ -44,7 +44,6 @@ numberButtons.forEach(numberButton => {
 });
 
 let result;
-let operator;
 let isOoperator = false;
 let storeValue;
 let finalResult = false;
@@ -103,7 +102,6 @@ function clearData() {
     lowerValue.textContent = '0';
     storeValue = '';
     result = undefined;
-    operator = '';
     finalResult = false;
     storeObject = {};
 }
