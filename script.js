@@ -15,16 +15,14 @@ function divide(a, b) {
 }
 
 function operate(a, b) {
-    if (operator === '+') {
+    if (storeObject.operator === '+') {
         result = +(add(a, b)).toFixed(2);
-    } else if (operator === '-') {
+    } else if (storeObject.operator === '-') {
         result = +(subtract(a, b)).toFixed(2);
-    } else if (operator === '×') {
+    } else if (storeObject.operator === '×') {
         result = +(multiply(a, b)).toFixed(2);
-    } else if (operator === '÷') {
+    } else if (storeObject.operator === '÷') {
         result = +(divide(a , b)).toFixed(2);
-    } else {
-        alert('Error, check operate function!');
     }
 }
 
@@ -45,6 +43,46 @@ numberButtons.forEach(numberButton => {
     });
 });
 
+let result;
+let operator;
+let isOoperator = false;
+let storeValue;
+let finalResult = false;
+let storeObject = {};
+
+const operatorButtons = document.querySelectorAll('.operator-button');
+operatorButtons.forEach(operatorButton => {
+    operatorButton.addEventListener('click', function() {
+        if (storeObject.numberOne === undefined) {
+            if (lowerValue.textContent === '0') return;
+            storeObject.numberOne = lowerValue.textContent;
+            storeObject.operator = operatorButton.textContent;
+            upperValue.textContent = `${lowerValue.textContent} ${operatorButton.textContent}`;
+            lowerValue.textContent = '0';
+        } else if (storeObject.numberTwo === undefined) {
+            if (lowerValue.textContent === '0') return;
+            if (operatorButton.textContent === '=') {
+                if (storeObject.operator === undefined) return;
+                storeObject.numberTwo = lowerValue.textContent;
+                operate(storeObject.numberOne, storeObject.numberTwo)
+                upperValue.textContent = `${storeObject.numberOne} ${storeObject.operator} ${storeObject.numberTwo} ${operatorButton.textContent}`;
+                lowerValue.textContent = result;
+                storeObject.operator = undefined;
+                storeObject.numberOne = result;
+                storeObject.numberTwo = undefined;
+            } else {
+                storeObject.numberTwo = lowerValue.textContent;
+                operate(storeObject.numberOne, storeObject.numberTwo);
+                storeObject.operator = operatorButton.textContent;
+                upperValue.textContent = `${result} ${operatorButton.textContent}`;            
+                lowerValue.textContent = '0';
+                storeObject.numberOne = result;
+                storeObject.numberTwo = undefined;
+            }
+        }
+    })
+});
+
 function clearData() {
     upperValue.textContent = '';
     lowerValue.textContent = '0';
@@ -52,6 +90,7 @@ function clearData() {
     result = undefined;
     operator = '';
     finalResult = false;
+    storeObject = {};
 }
 
 const clear = document.querySelector('#clear');
@@ -86,47 +125,3 @@ dot.addEventListener('click', () => {
         lowerValue.textContent += dot.textContent;
     }
 });
-
-let result;
-let operator;
-let storeValue;
-let finalResult = false;
-
-// start here
-
-const operatorAdd = document.querySelector('#operator-add');
-operatorAdd.addEventListener('click', () => {
-    
-    finalResult = false;
-});
-
-const operatorSubtract = document.querySelector('#operator-subtract');
-operatorSubtract.addEventListener('click', () => {
-    
-    finalResult = false;
-});
-
-const operatorMultiply = document.querySelector('#operator-multiply');
-operatorMultiply.addEventListener('click', () => {
-   
-    finalResult = false;
-});
-
-const operatorDivide = document.querySelector('#operator-divide');
-operatorDivide.addEventListener('click', () => {
-   
-    finalResult = false;
-});
-
-const operatorCount = document.querySelector('#operator-count');
-operatorCount.addEventListener('click', () => {
-    if (operator === '') return;
-    operate(storeValue, lowerValue.textContent);
-    if (result === '0') return;
-    upperValue.textContent = `${storeValue} ${operator} ${lowerValue.textContent} =`;
-    lowerValue.textContent = `${result}`;
-    storeValue = result;
-    operator = '';
-    finalResult = true;
-    
-})
