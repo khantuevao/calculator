@@ -67,6 +67,11 @@ button {
     background-color: #cac7c7;
 }
 
+.hoverNumber {
+    background-color: #0d3531;
+
+}
+
 #clear, #backspace {
     width: 170px;
 }
