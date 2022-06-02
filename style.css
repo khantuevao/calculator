@@ -66,11 +66,7 @@ button {
     font-size: 20px;
     background-color: #cac7c7;
 }
-
-.hoverNumber {
-    background-color: #0d3531;
-
-}
+button:hover{background-color: #949292;}
 
 #clear, #backspace {
     width: 170px;
@@ -79,16 +75,24 @@ button {
 #clear {
     background-color: #ff3b38de;
 }
+#clear:hover {background-color: #dd302dde;}
 
 #backspace {
     background-color: #ff8a42ee;
     font-size: 20px;
 }
+#backspace:hover {background-color: #d87436ee;}
 
 #operator-count {
     background-color: #124b45;
 }
+#operator-count:hover {background-color: #0d3531;}
+
 
 #operator-divide, #operator-multiply, #operator-add, #operator-subtract {
     background-color: #158378;
 }
+#operator-divide:hover, #operator-multiply:hover, #operator-add:hover,
+#operator-subtract:hover {background-color: #0f6159;}
+
+#dot:hover{background-color: #949292;}

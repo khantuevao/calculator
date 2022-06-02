@@ -166,37 +166,3 @@ dot.addEventListener('click', () => {
         lowerValue.textContent += dot.textContent;
     }
 });
-
-// Buttons styling
-
-// numbers
-numberButtons.forEach(numberButton => numberButton.addEventListener('mouseover', function(event) {
-    event.target.style.background = '#949292'}));
-numberButtons.forEach(numberButton => numberButton.addEventListener('mouseout', function(event) {
-    event.target.style.background = ''}));
-// dot
-dot.addEventListener('mouseover', function(event) {
-    event.target.style.background = '#949292'});
-dot.addEventListener('mouseout', function(event) {
-    event.target.style.background = ''});
-// operators
-operatorButtons.forEach(operatorButton => operatorButton.addEventListener('mouseover', function(event) {
-    event.target.style.background = '#0f6159'}));
-operatorButtons.forEach(operatorButton => operatorButton.addEventListener('mouseout', function(event) {
-    event.target.style.background = ''}));
-// operator count
-operatorCount = document.querySelector('#operator-count');
-operatorCount.addEventListener('mouseover', function(event) {
-    event.target.style.background = '#0d3531'});
-operatorCount.addEventListener('mouseout', function(event) {
-    event.target.style.background = ''});
-// clear
-clear.addEventListener('mouseover', function(event) {
-    event.target.style.background = '#dd302dde'});
-clear.addEventListener('mouseout', function(event) {
-    event.target.style.background = ''});
-// backspace
-backspace.addEventListener('mouseover', function(event) {
-    event.target.style.background = '#d87436ee'});
-backspace.addEventListener('mouseout', function(event) {
-    event.target.style.background = ''});
