@@ -67,6 +67,7 @@ button {
     background-color: #cac7c7;
 }
 button:hover{background-color: #949292;}
+button:active{transform: scale(0.95);}
 
 #clear, #backspace {
     width: 170px;
