@@ -1,3 +1,5 @@
+// Basic functions
+
 function add(a, b) {
     return Number(a) + Number(b);
 }
@@ -14,6 +16,8 @@ function divide(a, b) {
     return a / b;
 }
 
+// Function that evaluates the operator and calls a basic function
+
 function operate(a, b) {
     if (storeObject.operator === '+') {
         result = +(add(a, b)).toFixed(2);
@@ -26,8 +30,17 @@ function operate(a, b) {
     }
 }
 
+// Some variables
+
 let lowerValue = document.querySelector('#lowerscreen');
 let upperValue = document.querySelector('#upperscreen');
+
+let result;
+let storeValue;
+let finalResult = false;
+let storeObject = {};
+
+// Number buttons logic
 
 const numberButtons = document.querySelectorAll('.number-button');
 numberButtons.forEach(numberButton => {
@@ -44,11 +57,7 @@ numberButtons.forEach(numberButton => {
     });
 });
 
-let result;
-let isOoperator = false;
-let storeValue;
-let finalResult = false;
-let storeObject = {};
+// Operator buttons logic
 
 const operatorButtons = document.querySelectorAll('.operator-button');
 operatorButtons.forEach(operatorButton => {
@@ -110,6 +119,8 @@ operatorButtons.forEach(operatorButton => {
     })
 });
 
+// Clear button
+
 function clearData() {
     upperValue.textContent = '';
     lowerValue.textContent = '0';
@@ -122,6 +133,8 @@ function clearData() {
 const clear = document.querySelector('#clear');
 clear.addEventListener('click', clearData);
 
+// Backspace button
+
 const backspace = document.querySelector('#backspace');
 backspace.addEventListener('click', () => {
     if (finalResult) {
@@ -133,6 +146,8 @@ backspace.addEventListener('click', () => {
         lowerValue.textContent = '0';
     }
 });
+
+// Dot button
 
 function checkDot() {
     let array = (lowerValue.textContent).split('');
