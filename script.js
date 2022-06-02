@@ -75,7 +75,8 @@ operatorButtons.forEach(operatorButton => {
                 if (operatorButton.textContent === '=') {
                     storeObject.numberTwo = lowerValue.textContent;
                     if (storeObject.numberTwo === '0' && storeObject.operator === '÷') {
-                        clearData();
+                        storeObject.numberTwo = undefined;
+                        upperValue.textContent = `${storeObject.numberOne} ${storeObject.operator}`;
                         alert('Can\'t divide by 0');
                         return;
                     }
