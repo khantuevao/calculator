@@ -58,10 +58,18 @@ operatorButtons.forEach(operatorButton => {
             storeObject.operator = operatorButton.textContent;
             upperValue.textContent = `${lowerValue.textContent} ${operatorButton.textContent}`;
             lowerValue.textContent = '0';
+            console.log('1')
         } else if (storeObject.numberTwo === undefined) {
             if (lowerValue.textContent === '0') {
                 if (operatorButton.textContent === '=') {
                     storeObject.numberTwo = lowerValue.textContent;
+                    if (storeObject.numberTwo === '0' && storeObject.operator === '÷') {
+                        storeObject.operator = undefined;
+                        upperValue.textContent = `${storeObject.numberOne}`;
+                        storeObject.numberTwo = undefined;
+                        alert('Can\'t divide by 0');
+                        return;
+                    }
                     operate(storeObject.numberOne, storeObject.numberTwo)
                     upperValue.textContent = `${storeObject.numberOne} ${storeObject.operator} ${storeObject.numberTwo} ${operatorButton.textContent}`;
                     lowerValue.textContent = result;
@@ -69,9 +77,11 @@ operatorButtons.forEach(operatorButton => {
                     storeObject.numberOne = result;
                     storeObject.numberTwo = undefined;
                     finalResult = true;
+                    console.log('2')
                 } else {
                     storeObject.operator = operatorButton.textContent;
                     upperValue.textContent = `${storeObject.numberOne} ${operatorButton.textContent}`;
+                    console.log('3')
                 }
             } else if (operatorButton.textContent === '=') {
                 if (storeObject.operator === undefined) return;
@@ -83,6 +93,7 @@ operatorButtons.forEach(operatorButton => {
                 storeObject.numberOne = result;
                 storeObject.numberTwo = undefined;
                 finalResult = true;
+                console.log('4')
             } else {
                 storeObject.numberTwo = lowerValue.textContent;
                 operate(storeObject.numberOne, storeObject.numberTwo);
@@ -92,6 +103,7 @@ operatorButtons.forEach(operatorButton => {
                 storeObject.numberOne = result;
                 storeObject.numberTwo = undefined;
                 finalResult = false;
+                console.log('5')
             }
         }
     })
